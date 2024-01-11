@@ -8,13 +8,23 @@
 </head>
 <body>
 <div class="container">
-    <h1>Sprawdź pogodę</h1>
-    <form id="weather-form">
-        <input type="text" id="city" placeholder="Wpisz miasto" required>
-        <button type="submit">Sprawdź pogodę</button>
-    </form>
+    <div id="login-section">
+        <h1>Zaloguj się</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Nazwa użytkownika" required>
+            <input type="password" id="password" placeholder="Hasło" required>
+            <button type="submit">Zaloguj</button>
+        </form>
+    </div>
 
-    <div id="weather-info"></div>
+    <div id="weather-section" style="display: none;">
+        <h1>Sprawdź pogodę</h1>
+        <form id="weather-form">
+            <input type="text" id="city" placeholder="Wpisz miasto" required>
+            <button type="submit">Sprawdź pogodę</button>
+        </form>
+        <div id="weather-info"></div>
+    </div>
 </div>
 
 <script src="app.js"></script>

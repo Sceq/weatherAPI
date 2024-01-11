@@ -4,13 +4,32 @@ const { body, validationResult } = require('express-validator');
 const cors = require('cors');
 const moment = require('moment-timezone');
 const tzlookup = require('tz-lookup');
-
+const bcrypt = require('bcrypt');
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
 
 const API_KEY = "e57512b63f85f9aef65ca3193b3b7fba";
+
+const user = {
+    username: 'Filip',
+    password: 'Filip'
+};
+
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).json({ message: 'Brak nazwy użytkownika lub hasła' });
+    }
+
+    if (username === 'Filip' && password === 'Filip') {
+        res.json({ message: 'Zalogowano poprawnie' });
+    } else {
+        res.status(401).json({ message: 'Błędna nazwa użytkownika lub hasło' });
+    }
+});
 
 app.post('/weather',
     body('city').matches(/^[a-zA-Z\s]+$/).withMessage('Nazwa miasta może składać się tylko z liter i spacji'),
